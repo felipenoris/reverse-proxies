@@ -1,0 +1,10 @@
+[package]
+name = "dummy_service"
+version = "0.1.0"
+authors = ["Felipe Noronha <felipenoris@gmail.com>"]
+
+[dependencies]
+actix-web = "0.7"
+
+[profile.release]
+lto = true

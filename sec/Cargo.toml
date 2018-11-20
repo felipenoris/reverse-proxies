@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Felipe Noronha <felipenoris@gmail.com>"]
 
 [dependencies]
-hyper = "0.12.13"
+hyper = { git = "https://github.com/hyperium/hyper", branch="master" }
 futures = "0.1"
 lazy_static = "1.1"
 unicase = "2.2"

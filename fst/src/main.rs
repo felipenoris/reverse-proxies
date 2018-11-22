@@ -28,7 +28,7 @@ fn hello_world(_req: Request<Body>) -> BoxFut {
 }
 
 fn main() {
-    let addr = ([0, 0, 0, 0], 3000).into();
+    let addr = ([0, 0, 0, 0], 13001).into();
 
     let make_svc = make_service_fn(|socket: &AddrStream| {
         let remote_addr = socket.remote_addr();
@@ -39,7 +39,7 @@ fn main() {
             }
 
             if RGX_RISK_BACKEND.is_match(req.uri().path()) {
-                return proxy::call(remote_addr.ip(), "http://127.0.0.1:3001", req)
+                return proxy::call(remote_addr.ip(), "http://127.0.0.1:13655", req)
             }
 
             match req.uri().path() {

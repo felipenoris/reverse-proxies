@@ -27,7 +27,7 @@ fn hello_world(_req: Request<Body>) -> BoxFut {
 
 fn main() {
     // This is our socket address...
-    let addr = ([127, 0, 0, 1], 3001).into();
+    let addr = ([127, 0, 0, 1], 13655).into();
 
     // A `Service` is needed for every connection, so this
     // creates one from our `hello_world` function.
@@ -37,7 +37,7 @@ fn main() {
 
             match req.uri().path() {
                 "/risk-backend/hello" => hello_world(req),
-                "/risk-backend/dummy" => proxy::call(remote_addr.ip(), "http://127.0.0.1:13351", req),
+                "/risk-backend/dummy" => proxy::call(remote_addr.ip(), "http://127.0.0.1:13656", req),
                 _ => debug_request(req),
             }
         })

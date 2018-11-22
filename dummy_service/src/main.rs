@@ -9,7 +9,7 @@ fn index(req: &HttpRequest) -> String {
 }
 
 fn main() {
-    let addr = "127.0.0.1:13351";
+    let addr = "127.0.0.1:13656";
     println!("dummy running at {}/risk-backend/dummy", addr);
 
     server::new(|| App::new()

@@ -170,7 +170,7 @@ dependencies = [
 [[package]]
 name = "hyper-reverse-proxy"
 version = "0.3.0"
-source = "git+https://github.com/felipenoris/hyper-reverse-proxy.git?branch=fn/dev#692d287ee4b5d24a2b0dc2e1e4aef76ec89b46ef"
+source = "git+https://github.com/felipenoris/hyper-reverse-proxy.git?branch=fn/dev#fed9dd66b6c570caccee560fb800527744ac17da"
 dependencies = [
  "futures 0.1.25 (registry+https://github.com/rust-lang/crates.io-index)",
  "hyper 0.12.16 (registry+https://github.com/rust-lang/crates.io-index)",

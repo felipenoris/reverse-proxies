@@ -1,16 +1,14 @@
 
 
 extern crate hyper;
+extern crate hyper_reverse_proxy;
 extern crate futures;
-extern crate unicase;
 extern crate lazy_static;
 
 use hyper::server::conn::AddrStream;
 use hyper::{Body, Request, Response, Server};
 use hyper::service::{service_fn, make_service_fn};
 use futures::future::{self, Future};
-
-mod proxy;
 
 type BoxFut = Box<Future<Item=Response<Body>, Error=hyper::Error> + Send>;
 
@@ -37,7 +35,7 @@ fn main() {
 
             match req.uri().path() {
                 "/risk-backend/hello" => hello_world(req),
-                "/risk-backend/dummy" => proxy::call(remote_addr.ip(), "http://127.0.0.1:13656", req),
+                "/risk-backend/dummy" => hyper_reverse_proxy::call(remote_addr.ip(), "http://127.0.0.1:13656", req),
                 _ => debug_request(req),
             }
         })

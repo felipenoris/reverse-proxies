@@ -3,7 +3,6 @@
 extern crate hyper;
 extern crate hyper_reverse_proxy;
 extern crate futures;
-extern crate lazy_static;
 
 use hyper::server::conn::AddrStream;
 use hyper::{Body, Request, Response, Server};

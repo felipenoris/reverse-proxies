@@ -2,15 +2,11 @@
 extern crate hyper;
 extern crate hyper_reverse_proxy;
 extern crate futures;
-extern crate lazy_static;
-extern crate regex;
 
 use hyper::server::conn::AddrStream;
 use hyper::{Body, Request, Response, Server};
 use hyper::service::{service_fn, make_service_fn};
 use futures::future::{self, Future};
-use lazy_static::lazy_static;
-use regex::Regex;
 
 type BoxFut = Box<Future<Item=Response<Body>, Error=hyper::Error> + Send>;
 
@@ -33,11 +29,7 @@ fn main() {
         let remote_addr = socket.remote_addr();
         service_fn(move |req: Request<Body>| { // returns BoxFut
 
-            lazy_static! {
-                static ref RGX_RISK_BACKEND: Regex = Regex::new("^/risk-backend/.*$").unwrap();
-            }
-
-            if RGX_RISK_BACKEND.is_match(req.uri().path()) {
+            if req.uri().path().starts_with("/risk-backend/") {
                 return hyper_reverse_proxy::call(remote_addr.ip(), "http://127.0.0.1:13655", req)
             }
 
@@ -47,7 +39,6 @@ fn main() {
             }
         })
     });
-
 
     let server = Server::bind(&addr)
         .serve(make_svc)

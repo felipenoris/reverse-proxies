@@ -2,8 +2,9 @@
 name = "fst"
 version = "0.1.0"
 authors = ["Felipe Noronha <felipenoris@gmail.com>"]
+edition = "2018"
 
 [dependencies]
-hyper = "0.12.16"
+hyper = "0.12"
 hyper-reverse-proxy = { git = "https://github.com/felipenoris/hyper-reverse-proxy.git", branch="fn/dev" }
 futures = "0.1"

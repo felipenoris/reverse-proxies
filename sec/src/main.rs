@@ -1,9 +1,4 @@
 
-
-extern crate hyper;
-extern crate hyper_reverse_proxy;
-extern crate futures;
-
 use hyper::server::conn::AddrStream;
 use hyper::{Body, Request, Response, Server};
 use hyper::service::{service_fn, make_service_fn};
